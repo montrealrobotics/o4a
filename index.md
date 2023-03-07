@@ -4,7 +4,7 @@ title: Project template
 permalink: index.html
 ---
 
-<h1 style="text-align: center;">One-4-All: Neural Potential Fields for Embodied Navigation</h1>
+<h1 style="text-align: center; font-family: Helvetica, sans-serif">One-4-All: Neural Potential Fields for Embodied Navigation</h1>
 
 {% include_relative _relative_includes/authors.html %}
 
@@ -70,3 +70,8 @@ permalink: index.html
 ## Extra plots
 
 {% include_relative _relative_includes/extended_results.html %}
+
+## Augmentations
+
+{% include_relative _relative_includes/augmentations_images.html src_1="img/augmentations/original.png" caption_1="Original" src_2="img/augmentations/brightness_contrast.png" caption_2="Brightness/contrast" src_3="img/augmentations/dropout.png" caption_3="Dropout" src_4="img/augmentations/gauss_noise.png" caption_4="Gaussian noise" src_5="img/augmentations/hue_saturation.png" caption_5="Hue saturation" %}
+{% include_relative _relative_includes/augmentations_images.html src_1="img/augmentations/jitter.png" caption_1="Color jitter" src_2="img/augmentations/motion_blur.png" caption_2="Brightness/Motion blur" src_3="img/augmentations/perspective.png" caption_3="Perspective change" src_4="img/augmentations/sharpening.png" caption_4="Sharpening" src_5="img/augmentations/shift_scale_rotate.png" caption_5="Shift-Scale-Rotate" %}
