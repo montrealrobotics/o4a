@@ -36,7 +36,8 @@ permalink: index.html
 
 ## Embeddings
 
-{% include_relative _relative_includes/graph_embedding_images.html %}
+{% include_relative _relative_includes/graph_embedding_images_1.html %}
+{% include_relative _relative_includes/graph_embedding_images_2.html %}
 
 ## Main diagram
 
@@ -65,3 +66,7 @@ permalink: index.html
 {% include_relative _relative_includes/main_table.html %}
 
 {% include_relative _relative_includes/jackal_table.html %}
+
+## Extra plots
+
+{% include_relative _relative_includes/extended_results.html %}
