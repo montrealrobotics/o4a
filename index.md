@@ -7,16 +7,32 @@ permalink: index.html
 <h1 style="text-align: center; font-family: Helvetica, sans-serif">One-4-All: Neural Potential Fields for Embodied Navigation</h1>
 
 {% include_relative _relative_includes/authors.html %}
+<div style="text-align: center;"><em>*Authors contributed equally.</em></div>
 
+<br>
+<br>
 {% include_relative _relative_includes/badges.html %}
+<br>
+<br>
+
+{% include_relative _relative_includes/main_video.html %}
 
 ## Abstract
 
 <p style='text-align: justify;'> A fundamental task in robotics is to navigate between two locations. In particular, real-world navigation can require long-horizon planning using high-dimensional RGB images, which poses a substantial challenge for end-to-end learning-based approaches. Current semi-parametric methods instead achieve long-horizon navigation by combining learned modules with a topological memory of the environment, often represented as a graph over previously collected images. However, using these graphs in practice typically involves tuning a number of pruning heuristics to avoid spurious edges, limit runtime memory usage and allow reasonably fast graph queries. In this work, we present One-4-All (O4A), a method leveraging self-supervised and manifold learning to obtain a graph-free, end-to-end navigation pipeline in which the goal is specified as an image. Navigation is achieved by greedily minimizing a potential function defined continuously over the O4A latent space. Our system is trained offline on non-expert exploration sequences of RGB data and controls, and does not require any depth or pose measurements. We show that O4A can reach long-range goals in 8 simulated Gibson indoor environments, and further demonstrate successful real-world navigation using a Jackal UGV platform. </p>
 
-{% include_relative _relative_includes/main_video.html %}
+## Method
 
-## Videos
+<div>$x_2$</div>
+<div>$$x_2$$</div>
+
+{% include_relative _relative_includes/main_diagram.html %}
+O4A consists of 4 learnable modules for image-goal navigation. Learning is entirely achieved using previously collected RGB observation trajectories $\tau_{\obs} =\{\obs_t\}_{t=1}^T$ and corresponding actions $\actiontraj = \{a_t\}_{t=1}^T$, without pose. The \textbf{local backbone} $\local$ (left) takes as input RGB images  to produce low-dimensional latent codes $\code \in \latentspace$. The \textbf{locomotion head} $\conn$ (center) uses pairs of latent codes to predict the action required to traverse from one latent code to the other (order matters), or the inability to do so through the $\mathtt{NOT\_CONNECTED}$ output. $\local$ and $\conn$ are then used to construct a directed graph $\graph$, where nodes represent images and edges represent traversability. The \textbf{forward dynamics head} (bottom right) $\fd$ is trained using edges from $\graph$ to predict the next code $\code_j$ given the current code $\code_i$ and an action $a_{ij} \in \actions$. The geometry of the graph $\graph$ is embedded in a neural network using a \textbf{geodesic regressor} $\georeg$ (top right), which outputs the shortest path length for any pair of codes. Once all the modules are trained, $\graph$ can be discarded, and $\georeg$ be used as part of a potential function, as illustrated in Figure \ref{fig:potentials} and detailed in Equation \ref{eq:nav_cost}.
+
+
+
+## Simulation Results
+What up
 
 {% include_relative _relative_includes/row_videos.html title="Aloha" src_1="img/aloha/Aloha_easy.mp4" src_2="img/aloha/Aloha_medium.mp4" src_3="img/aloha/Aloha_hard.mp4" src_4="img/aloha/Aloha_very_hard.mp4" %}
 
@@ -38,10 +54,6 @@ permalink: index.html
 
 {% include_relative _relative_includes/graph_embedding_images_1.html %}
 {% include_relative _relative_includes/graph_embedding_images_2.html %}
-
-## Main diagram
-
-{% include_relative _relative_includes/main_diagram.html %}
 
 ## Detailed architectures and baselines
 
