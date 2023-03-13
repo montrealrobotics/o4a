@@ -4,6 +4,57 @@ title: Project template
 permalink: index.html
 ---
 
+<!--Load Mathjax-->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script> 
+
+<!--Latex Macros-->
+<div hidden>
+\(
+\newcommand{\actions}{\mathcal{A}}
+\newcommand{\freeactions}{\actions_{free}}
+\newcommand{\actionsconn}{\actions^\prime}
+\newcommand{\rgbspace}{\mathcal{O}_{RGB}}
+\newcommand{\rgbmanifold}{\mathcal{M}_{RGB}}
+\newcommand{\latentspace}{\mathcal{X}}
+\newcommand{\graph}{\mathcal{G}}
+
+% Data
+\newcommand{\obs}{o}
+\newcommand{\code}{x}
+\newcommand{\datatraj}{\tau_o}
+\newcommand{\actiontraj}{\tau_a}
+
+% Constantes
+\newcommand{\posmargin}{m_{+}}
+\newcommand{\negmargin}{m_{-}}
+
+% Models
+\newcommand{\local}{h}
+\newcommand{\conn}{f^{\dagger}}
+\newcommand{\fd}{f}
+\newcommand{\georeg}{p^{+}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert_2}
+\newcommand{\localmetric}{d_{\local}}
+\)
+</div>
+
+<!--Actual Page-->
 <h1 style="text-align: center; font-family: Helvetica, sans-serif">One-4-All: Neural Potential Fields for Embodied Navigation</h1>
 
 {% include_relative _relative_includes/authors.html %}
@@ -23,16 +74,27 @@ permalink: index.html
 
 ## Method
 
-<div>$x_2$</div>
-<div>$$x_2$$</div>
-
 {% include_relative _relative_includes/main_diagram.html %}
-O4A consists of 4 learnable modules for image-goal navigation. Learning is entirely achieved using previously collected RGB observation trajectories $\tau_{\obs} =\{\obs_t\}_{t=1}^T$ and corresponding actions $\actiontraj = \{a_t\}_{t=1}^T$, without pose. The \textbf{local backbone} $\local$ (left) takes as input RGB images  to produce low-dimensional latent codes $\code \in \latentspace$. The \textbf{locomotion head} $\conn$ (center) uses pairs of latent codes to predict the action required to traverse from one latent code to the other (order matters), or the inability to do so through the $\mathtt{NOT\_CONNECTED}$ output. $\local$ and $\conn$ are then used to construct a directed graph $\graph$, where nodes represent images and edges represent traversability. The \textbf{forward dynamics head} (bottom right) $\fd$ is trained using edges from $\graph$ to predict the next code $\code_j$ given the current code $\code_i$ and an action $a_{ij} \in \actions$. The geometry of the graph $\graph$ is embedded in a neural network using a \textbf{geodesic regressor} $\georeg$ (top right), which outputs the shortest path length for any pair of codes. Once all the modules are trained, $\graph$ can be discarded, and $\georeg$ be used as part of a potential function, as illustrated in Figure \ref{fig:potentials} and detailed in Equation \ref{eq:nav_cost}.
+<br>
+<div style="text-align: justify;">
+O4A consists of 4 learnable modules for image-goal navigation. Learning is entirely achieved using 
+previously collected RGB observation trajectories $\tau_{\obs} =\{\obs_t\}_{t=1}^T$ and corresponding 
+actions $\actiontraj = \{a_t\}_{t=1}^T$, without pose. The <b>local backbone</b> $\local$ (left) 
+takes as input RGB images  to produce low-dimensional latent codes $\code \in \latentspace$. The 
+locomotion head $\conn$ (center) uses pairs of latent codes to predict the action required to 
+traverse from one latent code to the other (order matters), or the inability to do so through the 
+$\mathtt{NOT\_CONNECTED}$ output. $\local$ and $\conn$ are then used to construct a directed graph 
+$\graph$, where nodes represent images and edges represent traversability. The forward dynamics
+head (bottom right) $\fd$ is trained using edges from $\graph$ to predict the next code $\code_j$ 
+given the current code $\code_i$ and an action $a_{ij} \in \actions$. The geometry of the graph $\graph$ 
+is embedded in a neural network using a geodesic regressor $\georeg$ (top right), which 
+outputs the shortest path length for any pair of codes. Once all the modules are trained, $\graph$ can 
+be discarded, and $\georeg$ be used as part of a potential function.
+</div>
 
 
 
 ## Simulation Results
-What up
 
 {% include_relative _relative_includes/row_videos.html title="Aloha" src_1="img/aloha/Aloha_easy.mp4" src_2="img/aloha/Aloha_medium.mp4" src_3="img/aloha/Aloha_hard.mp4" src_4="img/aloha/Aloha_very_hard.mp4" %}
 
