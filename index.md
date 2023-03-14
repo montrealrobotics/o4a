@@ -143,11 +143,9 @@ provide an estimate of human performance.
 O4A solves most episodes and achieves an average DTG of under 1m, even if most goals were not visible from the starting location and located up to 9 meters away.
 </div>
 
-<div style="margin: auto; width: 45%">
-    <video style="width:100%" autoplay loop muted controls>
-      <source src="img/timelapse.mp4" type="video/mp4" />
-    </video>
-</div>
+<br>
+{% include_relative _relative_includes/jackal_video.html %}
+<br>
 
 ## Embeddings
 <div style="text-align: justify">
@@ -163,14 +161,6 @@ O4A never used pose information.
 {% include_relative _relative_includes/graph_embedding_images_1.html %}
 {% include_relative _relative_includes/graph_embedding_images_2.html %}
 
-## Citation
-<pre>
-@article{morin2023one,
-  title={One-4-All: Neural Potential Fields for Embodied Navigation},
-  author={Morin, Sacha and Saavedra-Ruiz, Miguel and Paull, Liam},
-  journal={arXiv preprint arXiv:2303.04011},
-  year={2023}
-}</pre>
 
 ## Detailed architectures and baselines
 We finally show detailed architectures and hyperparameters for O4A and the baselines we used.
@@ -199,3 +189,7 @@ We finally show detailed architectures and hyperparameters for O4A and the basel
 
 {% include_relative _relative_includes/augmentations_images.html src_1="img/augmentations/original.png" caption_1="Original" src_2="img/augmentations/brightness_contrast.png" caption_2="Brightness/contrast" src_3="img/augmentations/dropout.png" caption_3="Dropout" src_4="img/augmentations/gauss_noise.png" caption_4="Gaussian noise" src_5="img/augmentations/hue_saturation.png" caption_5="Hue saturation" %}
 {% include_relative _relative_includes/augmentations_images.html src_1="img/augmentations/jitter.png" caption_1="Color jitter" src_2="img/augmentations/motion_blur.png" caption_2="Brightness/Motion blur" src_3="img/augmentations/perspective.png" caption_3="Perspective change" src_4="img/augmentations/sharpening.png" caption_4="Sharpening" src_5="img/augmentations/shift_scale_rotate.png" caption_5="Shift-Scale-Rotate" %}
+
+## Citation
+
+{% include_relative _relative_includes/citation.html %}
