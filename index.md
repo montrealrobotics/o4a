@@ -143,6 +143,12 @@ provide an estimate of human performance.
 O4A solves most episodes and achieves an average DTG of under 1m, even if most goals were not visible from the starting location and located up to 9 meters away.
 </div>
 
+<div style="margin: auto; width: 45%">
+    <video style="width:100%" autoplay loop muted controls>
+      <source src="img/timelapse.mp4" type="video/mp4" />
+    </video>
+</div>
+
 ## Embeddings
 <div style="text-align: justify">
 The geodesic regressor's training objective has strong connections with the manifold learning literature, and we show
@@ -156,6 +162,15 @@ O4A never used pose information.
 
 {% include_relative _relative_includes/graph_embedding_images_1.html %}
 {% include_relative _relative_includes/graph_embedding_images_2.html %}
+
+## Citation
+<pre>
+@article{morin2023one,
+  title={One-4-All: Neural Potential Fields for Embodied Navigation},
+  author={Morin, Sacha and Saavedra-Ruiz, Miguel and Paull, Liam},
+  journal={arXiv preprint arXiv:2303.04011},
+  year={2023}
+}</pre>
 
 ## Detailed architectures and baselines
 We finally show detailed architectures and hyperparameters for O4A and the baselines we used.
