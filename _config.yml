@@ -8,6 +8,7 @@ sass:
 asset_dir: /website-assets/assets
 
 base: ''
+relative_url: o4a
 
 # Navigation bar links.
 navigation:
