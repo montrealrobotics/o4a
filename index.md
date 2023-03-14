@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Project template
+title: One-4-All
 permalink: index.html
 ---
 {% include_relative _relative_includes/mathjax.html %}
