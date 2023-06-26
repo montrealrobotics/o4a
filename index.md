@@ -10,7 +10,7 @@ permalink: index.html
 <!--Actual Page-->
 <h1 style="text-align: center; font-family: Helvetica, sans-serif">One-4-All: Neural Potential Fields for Embodied Navigation</h1>
 
-<h3 style="text-align: center; font-family: Helvetica, sans-serif">IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2023)</h3>
+<h4 style="text-align: center; font-family: Helvetica, sans-serif">IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2023)</h4>
 
 {% include_relative _relative_includes/authors.html %}
 <div style="text-align: center;"><em>*Authors contributed equally.</em></div>
