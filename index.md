@@ -10,6 +10,8 @@ permalink: index.html
 <!--Actual Page-->
 <h1 style="text-align: center; font-family: Helvetica, sans-serif">One-4-All: Neural Potential Fields for Embodied Navigation</h1>
 
+<h3 style="text-align: center; font-family: Helvetica, sans-serif">IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2023)</h3>
+
 {% include_relative _relative_includes/authors.html %}
 <div style="text-align: center;"><em>*Authors contributed equally.</em></div>
 <br>
@@ -51,7 +53,7 @@ actions $\actiontraj = \{a_t\}_{t=1}^T$, without pose: </p>
 takes as input RGB images  to produce low-dimensional latent codes $\code \in \latentspace$ and is trained with a 
 self-supervised time contrastive objective. Once trained, the local backbone can output a local metric $\norm{\code_t - \code_s}$
 to measure similarity between observations. The extracted codes will also be used as inputs for other modules;</li>
-<li>The <a style="font-weight: bold">locomotion head </a> $\conn$ (center) uses pairs of latent codes to predict the action required to 
+<li>The <a style="font-weight: bold">inverse kinematics head </a> $\conn$ (center) uses pairs of latent codes to predict the action required to 
 traverse from one latent code to the other (order matters), or the inability to do so through the 
 $\mathtt{NOT\_CONNECTED}$ output;</li>
 </ul>
@@ -60,7 +62,7 @@ $\mathtt{NOT\_CONNECTED}$ output;</li>
 $\graph$, where nodes represent images. Edges represent one-action traversability and are weighted using the local metric. 
 $\graph$ will not be required for navigation, and is only relied on to derive training objectives for the last two components:</p> 
 <ul>
-<li>The <a style="font-weight: bold">forward dynamics
+<li>The <a style="font-weight: bold">forward kinematics
 head </a> (bottom right) $\fd$ is trained using edges from $\graph$ to predict the next code $\code_j$ 
 given the current code $\code_i$ and an action $a_{ij} \in \actions$;</li>
 <li>The <a style="font-weight: bold"> geodesic regressor </a> $\georeg$ (top right), which 
