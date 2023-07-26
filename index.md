@@ -75,15 +75,15 @@ train environment-specific regressors $\georeg_i$.  </p>
 
 ## Navigation
 <p style="text-align: justify;">
-The geodesic regressor $\georeg$ provides a powerful signal to navigate to a goal image. Indeed, it factors in the 
+The geodesic regressor $\georeg$ provides a powerful signal to navigate to a goal image (<span style="color:darkgreen;">green goal marker</span>). Indeed, it factors in the 
 environment geometry and can, for example, drive an agent out of a dead end to reach a goal that is close in terms of 
 Euclidean distance, but far geodesically. We use $\georeg$ as the attractor in a potential function $\mathcal{P}$ in 
-tandem with repulsors $p^{-}$ around previously visited observations (B,C,D). At each step, the agent A picks the action in $\freeactions$ that leads to a predicted waypoint W
-minimizing the total potential function. All computations occur in the latent space 
-$\latentspace$.
+tandem with repulsors $p^{-}$ around previously visited observations (<span style="color:red;">red markers</span>). At each step, the agent picks the action that leads to a potential-minimizing
+waypoint W. While we illustrate the potential function on the map, it is in fact defined directly over image embeddings in $\latentspace$.
 </p>
 
 {% include_relative _relative_includes/potentials.html %}
+<br>
 <p style="text-align: justify">
  Furthermore, we call $\mathtt{STOP}$ by thresholding the local metric between the current 
 image and the goal image. We found this to be more reliable than relying on $\conn$.
