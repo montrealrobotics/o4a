@@ -50,11 +50,11 @@ actions $\actiontraj = \{a_t\}_{t=1}^T$, without pose: </p>
 
 <ul>
 <li>The <a style="font-weight: bold">local backbone</a> $\local$ (left) 
-takes as input RGB images  to produce low-dimensional latent codes $\code \in \latentspace$ and is trained with a 
+takes as input RGB images  to produce low-dimensional latent embeddings $\code \in \latentspace$ and is trained with a 
 self-supervised time contrastive objective. Once trained, the local backbone can output a local metric $\norm{\code_t - \code_s}$
-to measure similarity between observations. The extracted codes will also be used as inputs for other modules;</li>
-<li>The <a style="font-weight: bold">inverse kinematics head </a> $\conn$ (center) uses pairs of latent codes to predict the action required to 
-traverse from one latent code to the other (order matters), or the inability to do so through the 
+to measure similarity between observations. The extracted embeddings will also be used as inputs for other modules;</li>
+<li>The <a style="font-weight: bold">inverse kinematics head </a> $\conn$ (center) uses pairs of embeddings to predict the action required to 
+traverse from one embedding to the other (order matters), or the inability to do so through the 
 $\mathtt{NOT\_CONNECTED}$ output;</li>
 </ul>
 
@@ -63,10 +63,10 @@ $\graph$, where nodes represent images. Edges represent one-action traversabilit
 $\graph$ will not be required for navigation, and is only relied on to derive training objectives for the last two components:</p> 
 <ul>
 <li>The <a style="font-weight: bold">forward kinematics
-head </a> (bottom right) $\fd$ is trained using edges from $\graph$ to predict the next code $\code_j$ 
-given the current code $\code_i$ and an action $a_{ij} \in \actions$;</li>
+head </a> (bottom right) $\fd$ is trained using edges from $\graph$ to predict the next embedding $\code_j$ 
+given the current embedding $\code_i$ and an action $a_{ij} \in \actions$;</li>
 <li>The <a style="font-weight: bold"> geodesic regressor </a> $\georeg$ (top right), which 
-learns to predict the shortest path length between from one code to the other. $\georeg$ is the core planning module and can be 
+learns to predict the shortest path length between images. $\georeg$ is the core planning module and can be 
 interpreted as encoding the geometry of $\graph$.</li>
 </ul>
 <p>When multiple environments are considered, $\local$, $\conn$ and $\fd$ are shared across environments, and we 
