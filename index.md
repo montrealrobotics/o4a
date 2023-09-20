@@ -66,7 +66,7 @@ $\graph$ will not be required for navigation, and is only relied on to derive tr
 head </a> (bottom right) $\fd$ is trained using edges from $\graph$ to predict the next embedding $\code_j$ 
 given the current embedding $\code_i$ and an action $a_{ij} \in \actions$;</li>
 <li>The <a style="font-weight: bold"> geodesic regressor </a> $\georeg$ (top right), which 
-learns to predict the shortest path length between images. $\georeg$ is the core planning module and can be 
+learns to predict the shortest path length between images embeddings. $\georeg$ is the core planning module and can be 
 interpreted as encoding the geometry of $\graph$.</li>
 </ul>
 <p>When multiple environments are considered, $\local$, $\conn$ and $\fd$ are shared across environments, and we 
