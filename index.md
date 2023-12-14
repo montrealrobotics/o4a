@@ -28,7 +28,11 @@ permalink: index.html
 
 ## About
 This page aims to present an overview of our method, as well as additional videos, figures and experiment details. 
-Have a look at <a href="https://arxiv.org/abs/2303.04011">our paper</a> for an in-depth presentation of the method!
+Have a look at <a href="https://arxiv.org/abs/2303.04011">our paper</a> and at our <a href="https://youtu.be/wOV_FWpb9yg">IROS video</a> for an in-depth presentation of the method!
+
+<br>
+{% include_relative _relative_includes/youtube_video.html %}
+<br>
 
 ## Task
 <p style="text-align: justify;">We consider a robot with a discrete action space 
